@@ -9,26 +9,32 @@
 //               befall her quiet town.
 ////////////////////////////////////////////////////
 
+boolean menuScreen = true;
 Map map; // current map
 Map town;
 Map home;
 Map cave;
 
 void setup() {
-  size(800, 600);
+  size(800, 600, P3D);
   colorMode(RGB, 1.0f);
   textureMode(NORMAL);
-  textureWrap(CLAMP);
+  //textureWrap(CLAMP);
+  loadMenuAssets();
   loadPresets();
   map = town;
   noStroke();
+  noCursor();
 }
 
 void draw() {
   clear();
-  resetMatrix();
-  background(0,0,0);
-  ortho(left, right, bottom, top);
+  if(menuScreen){
+    menu();
+  }
+  //resetMatrix();
+  //background(0,0,0);
+  //ortho(left, right, bottom, top);
   
   //////////////////////
   // CAMERA

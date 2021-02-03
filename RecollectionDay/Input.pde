@@ -7,21 +7,26 @@
 boolean musicboxToggled = false;
 
 void keyPressed(){
-  if(key == CODED){
-    if(keyCode == LEFT){
-    
-    }
-    if(keyCode == RIGHT){
-    
-    }
-    if(keyCode == UP){
-    
-    }
-    if(keyCode == DOWN){
-    
-    }
-    if(keyCode == BACKSPACE){
-      musicboxToggled = true;
+  if(menuScreen){
+    println("you clicked " + key);
+  }
+  else{
+    if(key == CODED){
+      if(keyCode == LEFT){
+      
+      }
+      if(keyCode == RIGHT){
+      
+      }
+      if(keyCode == UP){
+      
+      }
+      if(keyCode == DOWN){
+      
+      }
+      if(keyCode == BACKSPACE){
+        musicboxToggled = true;
+      }
     }
   }
   
