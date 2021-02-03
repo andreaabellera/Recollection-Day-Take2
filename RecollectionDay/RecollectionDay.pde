@@ -9,6 +9,10 @@
 //               befall her quiet town.
 ////////////////////////////////////////////////////
 
+import processing.sound.*;
+SoundFile townTheme;
+SoundFile caveTheme;
+
 boolean menuScreen = true;
 Map map; // current map
 Map town;
@@ -20,8 +24,8 @@ void setup() {
   colorMode(RGB, 1.0f);
   textureMode(NORMAL);
   //textureWrap(CLAMP);
-  loadMenuAssets();
   loadPresets();
+  loadMenuAssets();
   map = town;
   noStroke();
   noCursor();

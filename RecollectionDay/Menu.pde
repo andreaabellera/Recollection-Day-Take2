@@ -7,6 +7,7 @@
 PFont title;
 PFont subtitle;
 PFont credits;
+SoundFile menuTheme;
 PImage menuImage;
 PImage menuShards;
 PImage menuGrass;
@@ -23,6 +24,9 @@ float girlWidth = 150;
 float girlHeight = 380;
 
 void loadMenuAssets(){
+  menuTheme = new SoundFile(this,"res/music/MX01_maintheme_v02.wav");
+  menuTheme.play();
+  
   title = createFont("Garamond Bold", 60);
   subtitle = createFont("Garamond", 24);
   credits = createFont("Yu Gothic Bold", 15);
@@ -36,6 +40,10 @@ void loadMenuAssets(){
 }
 
 void menu(){
+  if(!menuTheme.isPlaying()){
+    menuTheme.play();
+    menuTheme.jump(20); // arbitrary jump, to be fixed
+  }
   animate();
   image(menuSky, 0, skyRise, width, height);
   image(menuShards, 0, shardRise, width, 130);
@@ -51,16 +59,35 @@ void menu(){
   text("Press any key to START", width/2, 150);
   textFont(credits);
   fill(0.2,0.2,0.15);
-  text("Andrea Abellera . 2021", width-100, height-30);
+  text("Berklee Video Game Music Jam 2020", width-150, height-30);
 }
+
+boolean gradualRise = false;
+boolean panReverse = false;
+boolean shardReverse = false;
 
 void animate(){
   shardRise = max(225, shardRise-1);
-  if(shardRise == 225){
-    girlWidth = max(100, girlWidth*0.994);
-    girlHeight = max(250, girlHeight*0.994);
-    panSides = min(0, panSides+1);
-    if(panSides == 0){
+  girlWidth = max(100, girlWidth*0.994);
+  girlHeight = max(250, girlHeight*0.994);
+  if(shardRise == 225 || shardReverse){
+    shardReverse = true;
+    if(!panReverse){
+      panSides = min(0, panSides+1);
+      if(panSides == 0){
+        gradualRise = true;
+        panReverse = true;
+      }
+    }
+    else{
+      panSides = max(-40, panSides-0.15);
+      shardRise = min(250, shardRise+1.05);
+      if(panSides == -40){
+        panReverse = false;
+        shardReverse = false;
+      }
+    }
+    if(gradualRise){
       skyRise = max(-120, skyRise-0.1);
       textBase = max(0.2, textBase-0.01);
     }

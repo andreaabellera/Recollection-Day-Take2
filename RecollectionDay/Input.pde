@@ -9,6 +9,8 @@ boolean musicboxToggled = false;
 void keyPressed(){
   if(menuScreen){
     println("you clicked " + key);
+    menuTheme.stop();
+    menuScreen = false;
   }
   else{
     if(key == CODED){
