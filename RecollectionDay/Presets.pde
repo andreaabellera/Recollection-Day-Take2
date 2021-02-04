@@ -7,8 +7,12 @@
 // Screen
 float left = -400;
 float right = 400;
-float bottom = 300;
-float top = -300;
+float bottom = -300;
+float top = 300;
+
+// Music
+SoundFile townTheme;
+SoundFile caveTheme;
 
 // Maps
 PImage mapTown;
@@ -45,15 +49,18 @@ PImage mapCave;
 PImage wallCave;
 PImage wallCaveDoor;
 
-
-
-
 void loadPresets(){
+  loadMusic();
   loadMapAssets();
   loadCharacterAssets();
   makeTown();
   makeHome();
   makeCave();
+}
+
+void loadMusic(){
+  townTheme = new SoundFile(this, "res/music/MX02_town_v01.wav");
+  caveTheme = new SoundFile(this, "res/music/MX03_cavetheme_v02.wav");
 }
 
 void loadMapAssets(){
@@ -94,13 +101,13 @@ void loadCharacterAssets(){
 }
 
 void makeTown(){
-  town = new Map();
+  town = new Map(mapTown, townTheme);
 }
 
 void makeHome(){
-  home = new Map();
+  home = new Map(mapHome, townTheme);
 }
 
 void makeCave(){
-  cave = new Map();
+  cave = new Map(mapCave, caveTheme);
 }

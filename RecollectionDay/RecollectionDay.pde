@@ -10,8 +10,6 @@
 ////////////////////////////////////////////////////
 
 import processing.sound.*;
-SoundFile townTheme;
-SoundFile caveTheme;
 
 boolean menuScreen = true;
 Map map; // current map
@@ -23,10 +21,10 @@ void setup() {
   size(800, 600, P3D);
   colorMode(RGB, 1.0f);
   textureMode(NORMAL);
-  //textureWrap(CLAMP);
+  textureWrap(CLAMP);
   loadPresets();
   loadMenuAssets();
-  map = town;
+  map = home;
   noStroke();
   noCursor();
 }
@@ -35,6 +33,13 @@ void draw() {
   clear();
   if(menuScreen){
     menu();
+  }
+  else{
+    ortho(left, right, bottom, top);
+    //camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0);
+    camera(playerX,playerY,1, playerX,playerY,0, 0,1,0);
+    map.draw();
+    movePlayer();
   }
   //resetMatrix();
   //background(0,0,0);
