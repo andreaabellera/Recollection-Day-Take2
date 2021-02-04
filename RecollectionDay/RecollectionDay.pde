@@ -40,26 +40,12 @@ void draw() {
     camera(playerX,playerY,1, playerX,playerY,0, 0,1,0);
     map.draw();
     movePlayer();
+    
+    frameCtr++;
+    drawPlayer(frameCtr);
+    if(frameCtr == 60){
+      frameCtr = 0;
+    }
   }
-  //resetMatrix();
-  //background(0,0,0);
-  //ortho(left, right, bottom, top);
   
-  //////////////////////
-  // CAMERA
-  //////////////////////
-  
-  //////////////////////
-  // DRAW OBJECTS
-  //////////////////////
-  
-  //frameCtr++;
-  
-  //drawMap();
-  //movePlayer();
-  //drawPlayer(frameCtr);
-  
-  //if(frameCtr == 60){
-  //  frameCtr = 0;
-  //}
 }

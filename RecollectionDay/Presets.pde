@@ -5,10 +5,10 @@
 ////////////////////////////////////////////////////
 
 // Screen
-float left = -400;
-float right = 400;
-float bottom = -300;
-float top = 300;
+float left = -200;
+float right = 200;
+float bottom = -150;
+float top = 150;
 
 // Music
 SoundFile townTheme;
@@ -49,10 +49,21 @@ PImage mapCave;
 PImage wallCave;
 PImage wallCaveDoor;
 
+// Characters
+PImage spriteWoman;
+PImage spriteWomanSide;
+PImage spriteMom;
+PImage spriteMomSide;
+PImage spriteBoy;
+PImage spriteMan;
+PImage spriteFarmer;
+PImage spriteWorkers;
+
 void loadPresets(){
   loadMusic();
   loadMapAssets();
   loadCharacterAssets();
+  //makePlayer();
   makeTown();
   makeHome();
   makeCave();
@@ -97,8 +108,28 @@ void loadMapAssets(){
 }
 
 void loadCharacterAssets(){
-
+  spriteWoman = loadImage("res/woman.png");
+  spriteWomanSide = loadImage("res/womanside.png");
+  spriteMom = loadImage("res/mom.png");
+  spriteMomSide = loadImage("res/momside.png");
+  spriteBoy = loadImage("res/boy.png");
+  spriteMan = loadImage("res/man.png");
+  spriteFarmer = loadImage("res/farmer.png");
+  spriteWorkers = loadImage("res/workers.png");
+  
+  for(int i = 0; i < 7; i++){
+    playerSide[i] = loadImage("res/playersprite/playerside" + (i+1) + ".png");
+    playerUp[i] = loadImage("res/playersprite/playerup" + (i+1) + ".png");
+    playerDown[i] = loadImage("res/playersprite/playerdown" + (i+1) + ".png");
+  }
+  lastStatic = playerDown[0];
 }
+
+//void makePlayer(){
+//  playerX = width/2.0;
+//  playerY = height/2.0;
+//  playerBox = new Box(playerX-5, playerX+5, playerY+12.5, playerY-12.5);
+//}
 
 void makeTown(){
   town = new Map(mapTown, townTheme);

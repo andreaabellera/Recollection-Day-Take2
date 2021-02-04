@@ -12,7 +12,6 @@ boolean keyDown = false;
 
 void keyPressed(){
   if(menuScreen){
-    println("you clicked " + key);
     menuTheme.stop();
     menuScreen = false;
   }
@@ -20,9 +19,11 @@ void keyPressed(){
     if(key == CODED){
       if(keyCode == LEFT){
         keyLeft = true;
+        playerAngle = PI;
       }
       if(keyCode == RIGHT){
         keyRight = true;
+        playerAngle = 0;
       }
       if(keyCode == UP){
         keyUp = true;
@@ -64,15 +65,19 @@ void keyReleased(){
   if(key == CODED){
     if(keyCode == LEFT){
       keyLeft = false;
+      lastStatic = playerSide[frameCtr/9];
     }
     if(keyCode == RIGHT){
       keyRight = false;
+      lastStatic = playerSide[frameCtr/9];
     }
     if(keyCode == UP){
       keyUp = false;
+      lastStatic = playerUp[frameCtr/9];
     }
     if(keyCode == DOWN){
       keyDown = false;
+      lastStatic = playerDown[frameCtr/9];
     }
   }
 }
