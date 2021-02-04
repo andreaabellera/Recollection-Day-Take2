@@ -4,10 +4,10 @@
 //   - Controls Player drawing and movement
 ////////////////////////////////////////////////////
 
-float playerX = width/2.0;
-float playerY = height/2.0;
-float pWidth = 10;
-float pHeight = 25; 
+float playerX = -24.5;
+float playerY = -77;
+float pWidth = 7;
+float pHeight = 18; 
 float playerAngle = 0;
 
 // Sprite frames for animation
@@ -19,16 +19,16 @@ int frameCtr = 0;
 
 void movePlayer(){
   if(keyLeft){
-    playerX -= 2;
+    playerX -= 1.5;
   }
   if(keyRight){
-    playerX += 2;
+    playerX += 1.5;
   }
   if(keyUp){
-    playerY -= 2;
+    playerY -= 1.5;
   }
   if(keyDown){
-    playerY += 2;
+    playerY += 1.5;
   }
 }
 

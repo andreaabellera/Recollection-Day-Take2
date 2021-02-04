@@ -14,6 +14,10 @@ float top = 150;
 SoundFile townTheme;
 SoundFile caveTheme;
 
+// Interaction assets
+PImage musicbox;
+PImage textbox;
+
 // Maps
 PImage mapTown;
 PImage wallTownCave;
@@ -61,9 +65,9 @@ PImage spriteWorkers;
 
 void loadPresets(){
   loadMusic();
+  loadInteractables();
   loadMapAssets();
   loadCharacterAssets();
-  //makePlayer();
   makeTown();
   makeHome();
   makeCave();
@@ -72,6 +76,11 @@ void loadPresets(){
 void loadMusic(){
   townTheme = new SoundFile(this, "res/music/MX02_town_v01.wav");
   caveTheme = new SoundFile(this, "res/music/MX03_cavetheme_v02.wav");
+}
+
+void loadInteractables(){
+  musicbox = loadImage("res/musicbox.png");
+  textbox = loadImage("res/textbox.png");
 }
 
 void loadMapAssets(){
@@ -125,20 +134,14 @@ void loadCharacterAssets(){
   lastStatic = playerDown[0];
 }
 
-//void makePlayer(){
-//  playerX = width/2.0;
-//  playerY = height/2.0;
-//  playerBox = new Box(playerX-5, playerX+5, playerY+12.5, playerY-12.5);
-//}
-
 void makeTown(){
-  town = new Map(mapTown, townTheme);
+  town = new Map(mapTown, townTheme, 200, 500);
 }
 
 void makeHome(){
-  home = new Map(mapHome, townTheme);
+  home = new Map(mapHome, townTheme, 100, 220);
 }
 
 void makeCave(){
-  cave = new Map(mapCave, caveTheme);
+  cave = new Map(mapCave, caveTheme, 150, 280);
 }

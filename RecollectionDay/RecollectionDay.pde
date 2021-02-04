@@ -36,16 +36,20 @@ void draw() {
   }
   else{
     ortho(left, right, bottom, top);
-    //camera(width/2.0, height/2.0, (height/2.0) / tan(PI*30.0 / 180.0), width/2.0, height/2.0, 0, 0, 1, 0);
     camera(playerX,playerY,1, playerX,playerY,0, 0,1,0);
     map.draw();
     movePlayer();
+    
+    // TRACKER
+    //println(playerX + ", " + playerY);
     
     frameCtr++;
     drawPlayer(frameCtr);
     if(frameCtr == 60){
       frameCtr = 0;
     }
+    map.drawSprites();
+    drawMusicbox();
   }
   
 }

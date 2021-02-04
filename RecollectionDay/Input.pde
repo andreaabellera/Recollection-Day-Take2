@@ -32,7 +32,14 @@ void keyPressed(){
         keyDown = true;
       }
       if(keyCode == BACKSPACE){
-        musicboxToggled = true;
+        musicboxToggled = !musicboxToggled;
+        if(musicboxToggled){
+          map.pauseTheme();
+        }
+        else{
+          map.playTheme();
+        }
+        
       }
     }
   }
@@ -56,6 +63,9 @@ void keyPressed(){
     map.stopTheme();
     map = cave;
     map.playTheme();
+  }
+  if(key == 'x'){
+    frameCtr++;
   }
   
 }
