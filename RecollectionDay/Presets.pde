@@ -84,14 +84,14 @@ void loadPresets(){
 }
 
 void loadMusic(){
-  townTheme = new SoundFile(this, "res/music/MX02_town_v01.wav");
-  caveTheme = new SoundFile(this, "res/music/MX03_cavetheme_v02.wav");
+  townTheme = new SoundFile(this, "res/music/MX02_town.wav");
+  caveTheme = new SoundFile(this, "res/music/MX03_cavetheme.wav");
 }
 
 void loadInteractables(){
   //recollections = createFont("Colonna MT", 30);
   recollections = createFont("TektonPro-BoldCond", 30);
-  musicboxOpen = new SoundFile(this, "res/music/MX04_musicbox_v01.wav");
+  musicboxOpen = new SoundFile(this, "res/music/MX04_musicbox.wav");
   musicbox = loadImage("res/musicbox.png");
   textbox = loadImage("res/textbox.png");
   choicebox = loadImage("res/choicebox.png");
@@ -149,12 +149,12 @@ void loadCharacterAssets(){
 }
 
 void makeTown(){
-  town = new Map(mapTown, townTheme, 14, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
+  town = new Map(mapTown, townTheme, 13, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
   town.addMapSprites(new Box(spriteHouseFront1,0,40,40,0));
 }
 
 void makeHome(){
-  home = new Map(mapHome, townTheme, 14, 100, 220);
+  home = new Map(mapHome, townTheme, 13, 100, 220);
 }
 
 void makeCave(){

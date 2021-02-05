@@ -27,7 +27,7 @@ boolean menuFade = false;
 float menuTint = 1.0;
 
 void loadMenuAssets(){
-  menuTheme = new SoundFile(this,"res/music/MX01_maintheme_v02.wav");
+  menuTheme = new SoundFile(this,"res/music/MX01_maintheme.wav");
   menuTheme.play();
   
   title = createFont("Garamond Bold", 60);
@@ -61,10 +61,11 @@ void menu(){
   textFont(subtitle);
   text("Press any key to start", width/2, 150);
   textFont(credits);
-  fill(0.2,0.2,0.15);
+  fill(textBase-0.5,textBase-0.5,textBase-0.55);
   text("Berklee Video Game Music Jam 2020", width-150, height-30);
   
   if(menuFade){
+    textBase -= 0.01;
     menuTint -= 0.01;
     tint(menuTint);
     menuTheme.amp(menuTint);
@@ -101,7 +102,7 @@ void animate(){
         shardReverse = false;
       }
     }
-    if(gradualRise){
+    if(gradualRise && !menuFade){
       skyRise = max(-120, skyRise-0.1);
       textBase = max(0.2, textBase-0.01);
     }

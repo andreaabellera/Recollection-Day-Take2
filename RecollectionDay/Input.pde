@@ -68,24 +68,25 @@ void keyPressed(){
   // Test
   if(key == 't'){
     println("Set map: town");
-    map.music.stop();
+    if(map == cave){
+      map.music.stop();
+      firstCue = true;
+    }
     map = town;
-    firstCue = true;
-    //map.music.play();
   }
   if(key == 'h'){
     println("Set map: home");
-    map.music.stop();
+    if(map == cave){
+      map.music.stop();
+      firstCue = true;
+    }
     map = home;
-    firstCue = true;
-    //map.music.play();
   }
   if(key == 'c'){
     println("Set map: cave");
     map.music.stop();
     map = cave;
     firstCue = true;
-    //map.music.play();
   }
   if(key == '+'){
     rCount++;
