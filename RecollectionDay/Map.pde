@@ -6,29 +6,19 @@
 
 class Map{
   private PImage background;
-  private SoundFile music;
+  public SoundFile music;
+  public float loopEntry;
   private float mWidth;
   private float mHeight;
   private ArrayList<Box> hitBoxes = new ArrayList<Box>();
   private ArrayList<Box> spriteBoxes = new ArrayList<Box>();
   
-  public Map(PImage background, SoundFile music, float mWidth, float mHeight){
+  public Map(PImage background, SoundFile music, float loopEntry, float mWidth, float mHeight){
     this.background = background;
     this.music = music;
+    this.loopEntry = loopEntry;
     this.mWidth = mWidth;
     this.mHeight = mHeight;
-  }
-  
-  public void playTheme(){
-    music.play();
-  }
-  
-  public void pauseTheme(){
-    music.pause();
-  }
-  
-  public void stopTheme(){
-    music.stop();
   }
   
   public void draw(){

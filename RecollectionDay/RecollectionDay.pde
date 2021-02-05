@@ -37,19 +37,6 @@ void draw() {
   else{
     ortho(left, right, bottom, top);
     camera(playerX,playerY,1, playerX,playerY,0, 0,1,0);
-    map.draw();
-    movePlayer();
-    
-    // TRACKER
-    //println(playerX + ", " + playerY);
-    
-    frameCtr++;
-    drawPlayer(frameCtr);
-    if(frameCtr == 60){
-      frameCtr = 0;
-    }
-    map.drawSprites();
-    drawMusicbox();
-  }
-  
+    game();
+  } 
 }

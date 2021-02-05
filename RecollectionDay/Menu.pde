@@ -42,7 +42,7 @@ void loadMenuAssets(){
 void menu(){
   if(!menuTheme.isPlaying()){
     menuTheme.play();
-    menuTheme.jump(20); // arbitrary jump, to be fixed
+    menuTheme.jump(27); // arbitrary jump, to be fixed
   }
   animate();
   image(menuSky, 0, skyRise, width, height);

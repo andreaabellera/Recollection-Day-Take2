@@ -18,54 +18,79 @@ void keyPressed(){
   else{
     if(key == CODED){
       if(keyCode == LEFT){
-        keyLeft = true;
-        playerAngle = PI;
-      }
-      if(keyCode == RIGHT){
-        keyRight = true;
-        playerAngle = 0;
-      }
-      if(keyCode == UP){
-        keyUp = true;
-      }
-      if(keyCode == DOWN){
-        keyDown = true;
-      }
-      if(keyCode == BACKSPACE){
-        musicboxToggled = !musicboxToggled;
         if(musicboxToggled){
-          map.pauseTheme();
+          rIndX = max(0,rIndX-1);
         }
         else{
-          map.playTheme();
+          keyLeft = true;
+          playerAngle = PI;
         }
-        
+      }
+      if(keyCode == RIGHT){
+        if(musicboxToggled){
+          rIndX = min(3,rIndX+1);
+        }
+        else{
+          keyRight = true;
+          playerAngle = 0;
+        }
+      }
+      if(keyCode == UP){
+        if(musicboxToggled){
+          rIndY = max(0,rIndY-1);
+        }
+        else{
+          keyUp = true;
+        }
+      }
+      if(keyCode == DOWN){
+        if(musicboxToggled){
+          rIndY = min(2,rIndY+1);
+        }
+        else{
+          keyDown = true;
+        }
       }
     }
   }
   
+  if(key == BACKSPACE){
+    musicboxToggled = !musicboxToggled;
+    if(musicboxToggled){
+      map.music.pause();
+      musicboxOpen.play();
+      musicboxOpen.amp(-0.5);
+    }
+    else{
+      map.music.play();
+    }
+  }
   
   // Test
   if(key == 't'){
     println("Set map: town");
-    map.stopTheme();
+    map.music.stop();
     map = town;
-    map.playTheme();
+    map.music.play();
   }
   if(key == 'h'){
     println("Set map: home");
-    map.stopTheme();
+    map.music.stop();
     map = home;
-    map.playTheme();
+    map.music.play();
   }
   if(key == 'c'){
     println("Set map: cave");
-    map.stopTheme();
+    map.music.stop();
     map = cave;
-    map.playTheme();
+    map.music.play();
   }
-  if(key == 'x'){
-    frameCtr++;
+  if(key == '+'){
+    rCount++;
+    rX.append(-160 + 90*int((rCount-1)%4));
+    rY.append(-70 + 80*int((rCount-1)/4));
+    rAng.append(random(-PI/10,PI/10));
+    println("Added new recollection. Total recollections: " + rCount);
   }
   
 }

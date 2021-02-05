@@ -15,8 +15,11 @@ SoundFile townTheme;
 SoundFile caveTheme;
 
 // Interaction assets
+PFont recollections;
+SoundFile musicboxOpen;
 PImage musicbox;
 PImage textbox;
+PImage choicebox;
 
 // Maps
 PImage mapTown;
@@ -71,6 +74,13 @@ void loadPresets(){
   makeTown();
   makeHome();
   makeCave();
+  
+  
+  // PFONT ITERATOR
+  //String[] fonts = PFont.list(); 
+  //for(int i = 0; i < fonts.length; i++){
+  //  println(fonts[i]);
+  //}
 }
 
 void loadMusic(){
@@ -79,8 +89,12 @@ void loadMusic(){
 }
 
 void loadInteractables(){
+  //recollections = createFont("Colonna MT", 30);
+  recollections = createFont("TektonPro-BoldCond", 30);
+  musicboxOpen = new SoundFile(this, "res/music/MX04_musicbox_v01.wav");
   musicbox = loadImage("res/musicbox.png");
   textbox = loadImage("res/textbox.png");
+  choicebox = loadImage("res/choicebox.png");
 }
 
 void loadMapAssets(){
@@ -135,13 +149,13 @@ void loadCharacterAssets(){
 }
 
 void makeTown(){
-  town = new Map(mapTown, townTheme, 200, 500);
+  town = new Map(mapTown, townTheme, 14, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
 }
 
 void makeHome(){
-  home = new Map(mapHome, townTheme, 100, 220);
+  home = new Map(mapHome, townTheme, 14, 100, 220);
 }
 
 void makeCave(){
-  cave = new Map(mapCave, caveTheme, 150, 280);
+  cave = new Map(mapCave, caveTheme, 0, 150, 280);
 }
