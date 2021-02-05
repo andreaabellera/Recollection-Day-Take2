@@ -23,6 +23,9 @@ float panSides = -80;
 float girlWidth = 150;
 float girlHeight = 380;
 
+boolean menuFade = false;
+float menuTint = 1.0;
+
 void loadMenuAssets(){
   menuTheme = new SoundFile(this,"res/music/MX01_maintheme_v02.wav");
   menuTheme.play();
@@ -56,10 +59,21 @@ void menu(){
   fill(textBase,textBase,textBase-0.05);
   text("Recollection Day", width/2, 100);
   textFont(subtitle);
-  text("Press any key to START", width/2, 150);
+  text("Press any key to start", width/2, 150);
   textFont(credits);
   fill(0.2,0.2,0.15);
   text("Berklee Video Game Music Jam 2020", width-150, height-30);
+  
+  if(menuFade){
+    menuTint -= 0.01;
+    tint(menuTint);
+    menuTheme.amp(menuTint);
+    if(menuTint <= 0){
+      menuTheme.stop();
+      menuScreen = false;
+      noTint();
+    }
+  }
 }
 
 boolean gradualRise = false;

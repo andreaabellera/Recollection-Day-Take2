@@ -150,6 +150,7 @@ void loadCharacterAssets(){
 
 void makeTown(){
   town = new Map(mapTown, townTheme, 14, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
+  town.addMapSprites(new Box(spriteHouseFront1,0,40,40,0));
 }
 
 void makeHome(){

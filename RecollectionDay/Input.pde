@@ -12,8 +12,7 @@ boolean keyDown = false;
 
 void keyPressed(){
   if(menuScreen){
-    menuTheme.stop();
-    menuScreen = false;
+    menuFade = true;
   }
   else{
     if(key == CODED){
@@ -71,19 +70,22 @@ void keyPressed(){
     println("Set map: town");
     map.music.stop();
     map = town;
-    map.music.play();
+    firstCue = true;
+    //map.music.play();
   }
   if(key == 'h'){
     println("Set map: home");
     map.music.stop();
     map = home;
-    map.music.play();
+    firstCue = true;
+    //map.music.play();
   }
   if(key == 'c'){
     println("Set map: cave");
     map.music.stop();
     map = cave;
-    map.music.play();
+    firstCue = true;
+    //map.music.play();
   }
   if(key == '+'){
     rCount++;

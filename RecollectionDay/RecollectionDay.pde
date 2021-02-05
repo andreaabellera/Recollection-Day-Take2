@@ -10,12 +10,7 @@
 ////////////////////////////////////////////////////
 
 import processing.sound.*;
-
 boolean menuScreen = true;
-Map map; // current map
-Map town;
-Map home;
-Map cave;
 
 void setup() {
   size(800, 600, P3D);

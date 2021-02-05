@@ -4,6 +4,12 @@
 //   - Handles game events and screen assets
 ////////////////////////////////////////////////////
 
+Map map; // current map
+Map town;
+Map home;
+Map cave;
+boolean firstCue = true;
+
 float mbX = 170; // coordinates of musicbox in screen
 float mbY = -140;
 float mbSize = 20;
@@ -11,6 +17,7 @@ float lerpAmt = 0.0; // musicbox animation upon toggle
 FloatList rX = new FloatList();
 FloatList rY = new FloatList();
 FloatList rAng = new FloatList();
+
 int rCount = 0;
 int rIndX = 0;
 int rIndY = 0;
@@ -22,14 +29,14 @@ void game(){
   movePlayer();
     
   // TRACKER
-  //println(playerX + ", " + playerY);
+  println(playerX + ", " + playerY);
     
   frameCtr++;
   drawPlayer(frameCtr);
   if(frameCtr == 60){
     frameCtr = 0;
   }
-  map.drawSprites();
+  map.drawMapSprites();
   
   // Musicbox
   if(musicboxToggled){
@@ -47,7 +54,12 @@ void game(){
   drawMusicbox();
   
   // Handle soundtrack
-  if(!map.music.isPlaying() && !musicboxToggled){
+  if(!map.music.isPlaying() && firstCue){ // this terrible code needs forgiveness
+    map.music.play();
+    firstCue = false;
+  }
+  
+  if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
   }

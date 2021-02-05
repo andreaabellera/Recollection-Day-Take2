@@ -39,9 +39,9 @@ class Map{
     hitBoxes.add(hitbox);
   }
   
-  public void drawSprites(){
+  public void drawMapSprites(){
     for(int i = 0; i < spriteBoxes.size(); i++){
-      
+      spriteBoxes.get(i).draw();
     }
   }
   
