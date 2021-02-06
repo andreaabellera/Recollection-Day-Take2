@@ -12,11 +12,8 @@ boolean firstCue = true;
 
 void game(){
   map.draw();
-  movePlayer();
-    
-  // TRACKER
-  //println(playerX + ", " + playerY);
-    
+  
+  movePlayer(); 
   frameCtr++;
   drawPlayer(frameCtr);
   if(frameCtr == 60){
@@ -24,9 +21,8 @@ void game(){
   }
   
   map.drawMapSprites();
-  map.drawDoors();
   
-  // Musicbox
+  // Toggle musicbox
   if(musicboxToggled){
     lerpAmt = min(1, lerpAmt+0.1);
     textFont(recollections);
@@ -50,5 +46,21 @@ void game(){
   if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
-  }  
+  }
+  
+  // Handle map transition
+  Door switchMap = map.checkDoors();
+  if(switchMap != null){
+    switchMap.switchMap();
+  }
+  if(fadeIn){
+    fadeTint += 0.01;
+    if(fadeTint >= 1){
+      fadeIn = false;
+    }
+  }
+  else{
+    fadeTint = 1;
+  }
+  tint(fadeTint);
 }

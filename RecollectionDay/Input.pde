@@ -95,6 +95,12 @@ void keyPressed(){
     rAng.append(random(-PI/10,PI/10));
     println("Added new recollection. Total recollections: " + rCount);
   }
+  if(key == '<'){ //show sample global narration text
+    //
+  }
+  if(key == '>'){ //show sample conversation
+    //
+  }
   
 }
 

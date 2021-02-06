@@ -15,6 +15,8 @@ SoundFile townTheme;
 SoundFile caveTheme;
 
 // Interaction assets
+PFont conversation;
+PFont narration;
 PFont recollections;
 SoundFile musicboxOpen;
 PImage musicbox;
@@ -78,6 +80,7 @@ void loadPresets(){
   makeTown();
   makeHome();
   makeCave();
+  setExceptions();
   
   
   // PFONT ITERATOR
@@ -158,10 +161,9 @@ void loadCharacterAssets(){
 
 void makeTown(){
   town = new Map(mapTown, townTheme, 13, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
-  
   town.addMapSprites(new Box(wallTownCave,-10,200,-445,-500));
       town.addHitbox(new Box(hitboxTest,-80,200,-445,-500));
-          town.addDoor(new Door(hitboxTest,65,130,-440,-450,cave,0,0));
+          town.addDoor(new Door(hitboxTest,65,130,-440,-450,"cave",4,200));
   town.addMapSprites(new Box(wallTownTop,-110,13,-403,-530));
       town.addHitbox(new Box(hitboxTest,-80,-75,-403,-413));
   
@@ -184,7 +186,7 @@ void makeTown(){
       town.addHitbox(new Box(hitboxTest,-112,-34,34,-25));
   town.addMapSprites(new Box(spriteHouseFront1,-172,-87,155,35));
       town.addHitbox(new Box(hitboxTest,-160,-97,155,85));
-          town.addDoor(new Door(hitboxTest,-140,-107,160,150,home,0,0));
+          town.addDoor(new Door(hitboxTest,-140,-107,160,150,"home",-60,180));
   town.addMapSprites(new Box(spriteHouseFront2,-74,15,155,35));
       town.addHitbox(new Box(hitboxTest,-64,7,155,85));
   
@@ -227,7 +229,7 @@ void makeHome(){
   home.addMapSprites(new Box(wallHomeLeft,-110,-90,225,-258));
   home.addMapSprites(new Box(wallHomeRight,90,110,225,-258));
   home.addMapSprites(new Box(wallHomeBottom,-30,100,225,205));
-          home.addDoor(new Door(hitboxTest,-90,-30,225,200,town,0,0));
+          home.addDoor(new Door(hitboxTest,-90,-30,225,200,"town",-120,170));
   
   home.addMapSprites(new Box(spriteMomSide,43,58,45,5));
       home.addHitbox(new Box(hitboxTest,43,58,45,35));
@@ -237,5 +239,10 @@ void makeCave(){
   cave = new Map(mapCave, caveTheme, 0, 150, 280);
   cave.addMapSprites(new Box(wallCave,-150,150,280,-280));
   cave.addMapSprites(new Box(wallCaveDoor,-75,84,280,214));
-          cave.addDoor(new Door(hitboxTest,-75,84,280,234,town,0,0));
+          cave.addDoor(new Door(hitboxTest,-75,84,280,234,"town",97,-430));
+}
+
+void setExceptions(){
+  town.setException(home);
+  home.setException(town);
 }

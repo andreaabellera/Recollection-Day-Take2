@@ -10,9 +10,11 @@ class Map{
   public float loopEntry;
   public float mWidth;
   public float mHeight;
-  private ArrayList<Box> hitBoxes = new ArrayList<Box>();
-  private ArrayList<Box> spriteBoxes = new ArrayList<Box>();
-  private ArrayList<Door> doors = new ArrayList<Door>();
+  public Map firstCueException = null; // entering this map will not restart the soundtrack
+  private ArrayList<Box> hitBoxes = new ArrayList<Box>(); // player cannot enter this box
+  private ArrayList<Box> spriteBoxes = new ArrayList<Box>(); // dimensions where a sprite is drawn
+  private ArrayList<Door> doors = new ArrayList<Door>(); // transfers player to a specific coordinate in another map
+  private ArrayList<Box> cues = new ArrayList<Box>(); // event is triggered when player enters this box
   
   public Map(PImage background, SoundFile music, float loopEntry, float mWidth, float mHeight){
     this.background = background;
@@ -44,6 +46,10 @@ class Map{
     doors.add(door);
   }
   
+  public void setException(Map mapException){
+    firstCueException = mapException;
+  }
+  
   public void drawMapSprites(){
     for(int i = 0; i < spriteBoxes.size(); i++){
       spriteBoxes.get(i).draw();
@@ -66,6 +72,21 @@ class Map{
         }
       }
     }
+  }
+  
+  public Door checkDoors(){
+    Door theDoor = null;
+    boolean collideX = false;
+    boolean collideY = false;
+    for(int i = 0; i < doors.size(); i++){
+      Door door = doors.get(i);
+      collideX = collide(pHitbox.l,pHitbox.r,  door.l,door.r);
+      collideY = collide(pHitbox.t,pHitbox.b,  door.t,door.b);
+      if(collideX && collideY){ 
+        theDoor = door;
+      }
+    }
+    return theDoor;
   }
   
   private boolean collide(float pStart, float pEnd, float bStart, float bEnd){
