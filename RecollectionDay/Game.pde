@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////////////
 // GAME
-//   - Handles game events and screen assets
+//   - Handles drawing, interactions and game events
 ////////////////////////////////////////////////////
 
 Map map; // current map
@@ -9,20 +9,6 @@ Map town;
 Map home;
 Map cave;
 boolean firstCue = true;
-
-float mbX = 170; // coordinates of musicbox in screen
-float mbY = -140;
-float mbSize = 20;
-float lerpAmt = 0.0; // musicbox animation upon toggle
-FloatList rX = new FloatList();
-FloatList rY = new FloatList();
-FloatList rAng = new FloatList();
-
-int rCount = 0;
-int rIndX = 0;
-int rIndY = 0;
-float rHeight = 40;
-float rWidth = 60;
 
 void game(){
   map.draw();
@@ -36,7 +22,9 @@ void game(){
   if(frameCtr == 60){
     frameCtr = 0;
   }
+  
   map.drawMapSprites();
+  map.drawDoors();
   
   // Musicbox
   if(musicboxToggled){
@@ -54,7 +42,7 @@ void game(){
   drawMusicbox();
   
   // Handle soundtrack
-  if(!map.music.isPlaying() && firstCue){ // this terrible code needs forgiveness
+  if(!map.music.isPlaying() && firstCue){
     map.music.play();
     firstCue = false;
   }
@@ -62,45 +50,5 @@ void game(){
   if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
-  }
-  
-}
-
-
-void drawMusicbox(){
-  noTint();
-  beginShape(QUADS);
-  texture(musicbox); 
-  vertex(playerX+mbX, playerY+mbY,1,  0,0);
-  vertex(playerX+mbX+mbSize, playerY+mbY,1,  1,0);
-  vertex(playerX+mbX+mbSize, playerY+mbY+mbSize,1,  1,1);
-  vertex(playerX+mbX, playerY+mbY+mbSize,1,  0,1);
-  endShape();
-  
-  if(musicboxToggled){
-    tint(0.5);
-  }
-}
-
-void drawRecollections(int count){
-  pushMatrix();
-  for(int i = 0; i < count; i++){
-    pushMatrix();
-    translate(playerX+rX.get(i), playerY+rY.get(i), 1);
-    rotate(rAng.get(i));
-    
-    if(i == rIndX + 4*rIndY){
-      stroke(0.9,0.9,0.5);
-    }
-    beginShape(QUADS);
-    texture(choicebox); 
-    vertex(0, 0,  0,0);
-    vertex(rWidth, 0,  1,0);
-    vertex(rWidth, rHeight,  1,1);
-    vertex(0, rHeight,  0,1);
-    endShape();
-    noStroke();
-    popMatrix();
-  }
-  popMatrix();
+  }  
 }
