@@ -6,8 +6,8 @@
 
 float playerX = -24.5;
 float playerY = -77;
-float pWidth = 7;
-float pHeight = 18; 
+float pWidth = 6.5;
+float pHeight = 17; 
 float playerAngle = 0;
 
 // Sprite frames for animation

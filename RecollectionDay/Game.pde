@@ -29,7 +29,7 @@ void game(){
   movePlayer();
     
   // TRACKER
-  println(playerX + ", " + playerY);
+  //println(playerX + ", " + playerY);
     
   frameCtr++;
   drawPlayer(frameCtr);
@@ -44,7 +44,7 @@ void game(){
     textFont(recollections);
     textAlign(CENTER,CENTER);
     fill(0.6,0.6,0.55);
-    text("RECOLLECTIONS", playerX, playerY-100);
+    text("RECOLLECTIONS", playerX, playerY-100, 1);
     drawRecollections(rCount);
   }
   else{
@@ -71,10 +71,10 @@ void drawMusicbox(){
   noTint();
   beginShape(QUADS);
   texture(musicbox); 
-  vertex(playerX+mbX, playerY+mbY,  0,0);
-  vertex(playerX+mbX+mbSize, playerY+mbY,  1,0);
-  vertex(playerX+mbX+mbSize, playerY+mbY+mbSize,  1,1);
-  vertex(playerX+mbX, playerY+mbY+mbSize,  0,1);
+  vertex(playerX+mbX, playerY+mbY,1,  0,0);
+  vertex(playerX+mbX+mbSize, playerY+mbY,1,  1,0);
+  vertex(playerX+mbX+mbSize, playerY+mbY+mbSize,1,  1,1);
+  vertex(playerX+mbX, playerY+mbY+mbSize,1,  0,1);
   endShape();
   
   if(musicboxToggled){
@@ -86,15 +86,14 @@ void drawRecollections(int count){
   pushMatrix();
   for(int i = 0; i < count; i++){
     pushMatrix();
-    translate(playerX+rX.get(i), playerY+rY.get(i), 0.2);
+    translate(playerX+rX.get(i), playerY+rY.get(i), 1);
     rotate(rAng.get(i));
     
     if(i == rIndX + 4*rIndY){
       stroke(0.9,0.9,0.5);
     }
     beginShape(QUADS);
-    texture(choicebox);
-    //fill(0.6,0.6,0.55); 
+    texture(choicebox); 
     vertex(0, 0,  0,0);
     vertex(rWidth, 0,  1,0);
     vertex(rWidth, rHeight,  1,1);

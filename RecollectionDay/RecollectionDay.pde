@@ -31,7 +31,7 @@ void draw() {
   }
   else{
     ortho(left, right, bottom, top);
-    camera(playerX,playerY,1, playerX,playerY,0, 0,1,0);
+    camera(playerX,playerY,2, playerX,playerY,0, 0,1,0);
     game();
   } 
 }

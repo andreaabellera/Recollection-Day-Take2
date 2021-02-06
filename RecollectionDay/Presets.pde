@@ -124,6 +124,9 @@ void loadMapAssets(){
   wallHomeLeft = loadImage("res/wallthin2.png");
   wallHomeRight = loadImage("res/wallthin3.png");
   wallHomeBottom = loadImage("res/wallthin1.png");
+  spriteBoiler = loadImage("res/boiler.png");
+  spriteTable = loadImage("res/table.png");
+  spriteStove = loadImage("res/stove.png");
   
   mapCave = loadImage("res/cavefloor.jpg");
   wallCave = loadImage("res/cavewall.png");
@@ -150,13 +153,54 @@ void loadCharacterAssets(){
 
 void makeTown(){
   town = new Map(mapTown, townTheme, 13, 200, 500); // Map image, map soundtrack, sountrack loop point, map image width, map image height
-  town.addMapSprites(new Box(spriteHouseFront1,0,40,40,0));
+  
+  town.addMapSprites(new Box(wallTownCave,-10,200,-445,-500));
+  town.addMapSprites(new Box(wallTownTop,-110,13,-403,-530));
+  
+  town.addMapSprites(new Box(spriteMan,150,163,-350,-390));
+  
+  town.addMapSprites(new Box(spriteHouseBack2,-26,60,-276,-442));
+  town.addMapSprites(new Box(spriteHouseSide1,-80,31,-246,-376));
+  town.addMapSprites(new Box(spriteHouseSide2,-80,11,-126,-255));
+  town.addMapSprites(new Box(spriteHouseSide3,71,177,-60,-156));
+  
+  town.addMapSprites(new Box(spriteWomanSide,25,43,-200,-240));
+  
+  town.addMapSprites(new Box(spriteHouseBack1,-132,-16,34,-75));
+  town.addMapSprites(new Box(spriteHouseFront1,-172,-87,155,35));
+  town.addMapSprites(new Box(spriteHouseFront2,-74,15,155,35));
+  
+  town.addMapSprites(new Box(spriteBoy,15,28,155,121));
+  town.addMapSprites(new Box(spriteFarmer,-108,-90,350,310));
+  
+  town.addMapSprites(new Box(spriteWell,117,167,80,8));
+  town.addMapSprites(new Box(spriteCowpen,65,170,415,295));
+  town.addMapSprites(new Box(spriteSacks,-138,17,425,347));
+  
+  town.addMapSprites(new Box(spriteWorkers,-68,-20,425,375));
+  
+  town.addMapSprites(new Box(spriteTrain,-24,130,472,350));
+  town.addMapSprites(new Box(wallTownLeft,-130,-257,30,-560));
+  town.addMapSprites(new Box(wallTownRight,-130,-257,500,-30));
+  town.addMapSprites(new Box(wallTownLeft,130,260,500,-30));
+  town.addMapSprites(new Box(wallTownRight,130,260,30,-525));
 }
 
 void makeHome(){
   home = new Map(mapHome, townTheme, 13, 100, 220);
+  home.addMapSprites(new Box(spriteBoiler,16,74,220,125));
+  home.addMapSprites(new Box(spriteTable,-54,1,0,-60));
+  home.addMapSprites(new Box(spriteStove,58,100,65,-45));
+  home.addMapSprites(new Box(wallHomeTop,-100,100,-220,-258));
+  home.addMapSprites(new Box(wallHomeLeft,-110,-90,225,-258));
+  home.addMapSprites(new Box(wallHomeRight,90,110,225,-258));
+  home.addMapSprites(new Box(wallHomeBottom,-30,100,225,205));
+  
+  home.addMapSprites(new Box(spriteMomSide,43,58,45,5));
 }
 
 void makeCave(){
   cave = new Map(mapCave, caveTheme, 0, 150, 280);
+  cave.addMapSprites(new Box(wallCave,-150,150,280,-280));
+  cave.addMapSprites(new Box(wallCaveDoor,-75,84,280,214));
 }
