@@ -42,24 +42,17 @@ void game(){
     map.music.play();
     firstCue = false;
   }
+  if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
+    map.music.play();
+    map.music.jump(map.loopEntry);
+  }
   
   // Handle events
-  if(narrating){
+  if(narrating){ 
     narrate(currMsg);
   }
   else if(conversing){
     converse(currMsg, npcName);
-  }
-  else{
-    playerPause = false;
-    currMsg = "";
-    msgInd = 0;
-  }
-  
-  
-  if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
-    map.music.play();
-    map.music.jump(map.loopEntry);
   }
   
   // Handle map transition
@@ -67,12 +60,14 @@ void game(){
   if(switchMap != null){
     switchMap.switchMap();
   }
-  
   if(fadeIn){
     fadeTint += 0.01;
     if(fadeTint >= 1){
       fadeIn = false;
     }
+  }
+  else if(musicboxToggled){
+    fadeTint = 0.5;
   }
   else{
     fadeTint = 1;

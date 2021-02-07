@@ -27,9 +27,9 @@ void drawMusicbox(){
   vertex(playerX+mbX, playerY+mbY+mbSize,1,  0,1);
   endShape();
   
-  if(musicboxToggled){
-    tint(0.5);
-  }
+  //if(musicboxToggled){
+  //  tint(0.5);
+  //}
 }
 
 void drawRecollections(int count){

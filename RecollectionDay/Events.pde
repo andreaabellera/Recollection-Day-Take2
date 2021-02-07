@@ -86,50 +86,83 @@ void msgIterate(){
 void interact(int spriteID){
   if(map == town){
     if(spriteID == 1){ // far tree
-      msg = "They who stay behind should feed those in front.";
+      msg = "The tree with overreaching arms, dancing fingers with the wind.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     else if(spriteID == 2){ // man
-      msg = "They who stay behind should feed those in front.";
+      msg = "After roughly a year, the vipers came back. Those pests hide in the\ncrevices of that cave.";
+      currMsg = "";
+      msgInd = 0;
+      narrating = false;
+      npcName = "Dmitry";
       conversing = true;
     }
     else if(spriteID == 7){ // woman
-      msg = "They who stay behind should feed those in front.";
+      msg = "Ivan is there, just watching trains all day.";
+      currMsg = "";
+      msgInd = 0;
+      narrating = false;
+      npcName = "Olga";
       conversing = true;
     }
     else if(spriteID == 11){ // boy
-      msg = "They who stay behind should feed those in front.";
+      msg = "Mama said to keep far and don't disturb the workers.";
+      msg = "Yulia, so many trains are passing by today. You should have seen the\nsixth train, that one's huge!";
+      currMsg = "";
+      msgInd = 0;
+      narrating = false;
+      npcName = "Ivan";
       conversing = true;
     }
     else if(spriteID == 12){ // farmer
-      msg = "They who stay behind should feed those in front.";
+      msg = "They who stay behind should feed those in front.\nAt the end, it is all fair."; 
+      msg = "They are taking everything, grains, meat, all. We had to harvest early.\nWhat we have in the warehouse is hopefully enough.";
+      currMsg = "";
+      msgInd = 0;
+      narrating = false;
+      npcName = "Vlad";
       conversing = true;
     }
     else if(spriteID == 13){ // well
-      msg = "They who stay behind should feed those in front.";
+      msg = "Mama gets water here everyday. I always looked down\nand wondered how deep the water is.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     else if(spriteID == 14){ // cowpen
-      msg = "They who stay behind should feed those in front.";
+      msg = "There are fewer cows in the cowpen now.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     else if(spriteID == 15){ // far sack
-      msg = "They who stay behind should feed those in front.";
+      msg = "I should not stand in the railroad or the trains will hit me.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     else if(spriteID > 15 && spriteID < 19){ // sacks
-      msg = "They who stay behind should feed those in front.";
+      msg = "Crops are inside the sacks.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     
   }
   else if(map == home){
     if(spriteID == 0){ // boiler
-      msg = "They who stay behind should feed those in front.";
+      msg = "The boiler is heating.";
+      currMsg = "";
+      msgInd = 0;
       narrating = true;
     }
     else if(spriteID == 4){ // mom
-      msg = "Yulia, go to sleep Ilot.";
+      msg = "Your father is coming home. Go to sleep, Yulia.";
+      currMsg = "";
+      msgInd = 0;
+      narrating = false;
       npcName = "Iryna";
       conversing = true;
     }

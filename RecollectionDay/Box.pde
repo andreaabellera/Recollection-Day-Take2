@@ -77,7 +77,9 @@ class Door extends Box{
         map.music.stop();
         firstCue = true;
       }
+      map.music.stop();
       map = cave;
+      firstCue = true;
     }
     playerX = destX;
     playerY = destY;
