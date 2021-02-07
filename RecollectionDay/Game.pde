@@ -40,11 +40,19 @@ void game(){
   // Handle soundtrack
   if(!map.music.isPlaying() && firstCue){
     map.music.play();
+    map.music.jump(0);
     firstCue = false;
   }
-  if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
+  else if(!map.music.isPlaying() && !musicboxToggled && !playerPause && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
+  }
+  else if(audioCue){
+    if(!currCue.isPlaying()){
+      audioCue = false;
+      playerPause = false;
+      map.music.play();
+    }
   }
   
   // Handle events

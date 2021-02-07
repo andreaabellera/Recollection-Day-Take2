@@ -62,6 +62,7 @@ void menu(){
   text("Press any key to start", width/2, 150);
   textFont(credits);
   fill(textBase-0.5,textBase-0.5,textBase-0.55);
+  text("CONTROLS:\nArrow keys to move\n'z' to interact\nBACKSPACE to toggle music box", width-150, height-120);
   text("Berklee Video Game Music Jam 2020", width-150, height-30);
   
   if(menuFade){

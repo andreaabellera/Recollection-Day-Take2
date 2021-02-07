@@ -92,12 +92,16 @@ void keyPressed(){
     map = cave;
     firstCue = true;
   }
-  if(key == '+'){
-    rCount++;
-    rX.append(-160 + 90*int((rCount-1)%4));
-    rY.append(-70 + 80*int((rCount-1)/4));
-    rAng.append(random(-PI/10,PI/10));
-    println("Added new recollection. Total recollections: " + rCount);
+  if(key == 'z'){
+    if(musicboxToggled){
+      int index = rIndX + 4*rIndY;
+      SoundFile cue = soundCollection.get(index);
+      cue.play();
+      msg = soundDescription.get(index);
+      currMsg = "";
+      msgInd = 0;
+      narrating = true;
+    }
   }
   if(key == '|'){
     town.changeImage(3, spriteHouseRuin1);

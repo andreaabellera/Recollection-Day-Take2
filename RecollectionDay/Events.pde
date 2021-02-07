@@ -8,6 +8,8 @@ boolean startEvent = false;
 boolean trainPass = false;
 boolean narrating = false;
 boolean conversing = false;
+boolean audioCue = false;
+SoundFile currCue;
 String npcName = "Ilot";
 boolean playerPause = false;
 boolean autoTimeout = true;
@@ -90,6 +92,15 @@ void interact(int spriteID){
       currMsg = "";
       msgInd = 0;
       narrating = true;
+      if(!treeCue){
+        treeCue = true;
+        addRecollection(tree,"I see men as trees, walking.");
+        audioCue = true;
+        currCue = tree;
+        map.music.pause();
+        tree.play();
+        playerPause = true;
+      }
     }
     else if(spriteID == 2){ // man
       msg = "After roughly a year, the vipers came back. Those pests hide in the\ncrevices of that cave.";
@@ -130,12 +141,30 @@ void interact(int spriteID){
       currMsg = "";
       msgInd = 0;
       narrating = true;
+      if(!waterCue){
+        waterCue = true;
+        addRecollection(water,"And through the rivers, they shall not overflow thee.");
+        audioCue = true;
+        currCue = water;
+        map.music.pause();
+        water.play();
+        playerPause = true;
+      }
     }
     else if(spriteID == 14){ // cowpen
       msg = "There are fewer cows in the cowpen now.";
       currMsg = "";
       msgInd = 0;
       narrating = true;
+      if(!cowCue){
+        cowCue = true;
+        addRecollection(cow,"They bow down together; ..but themselves are gone\ninto captivity.");
+        audioCue = true;
+        currCue = cow;
+        map.music.pause();
+        cow.play();
+        playerPause = true;
+      }
     }
     else if(spriteID == 15){ // far sack
       msg = "I should not stand in the railroad or the trains will hit me.";
@@ -157,6 +186,15 @@ void interact(int spriteID){
       currMsg = "";
       msgInd = 0;
       narrating = true;
+      if(!boilerCue){
+        boilerCue = true;
+        addRecollection(boiler,"Which the clouds do drop and distil upon man abundantly.");
+        audioCue = true;
+        currCue = boiler;
+        map.music.pause();
+        boiler.play();
+        playerPause = true;
+      }
     }
     else if(spriteID == 4){ // mom
       msg = "Your father is coming home. Go to sleep, Yulia.";

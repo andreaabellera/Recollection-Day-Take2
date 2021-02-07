@@ -4,6 +4,8 @@
 //   - Musicbox interface and cues
 ////////////////////////////////////////////////////
 
+ArrayList<SoundFile> soundCollection = new ArrayList<SoundFile>();
+ArrayList<String> soundDescription = new ArrayList<String>();
 float mbX = 170; // coordinates of musicbox in screen
 float mbY = -140;
 float mbSize = 20;
@@ -53,4 +55,13 @@ void drawRecollections(int count){
     popMatrix();
   }
   popMatrix();
+}
+
+void addRecollection(SoundFile audioCue, String description){
+  soundCollection.add(audioCue);
+  soundDescription.add(description);
+  rCount++;
+  rX.append(-160 + 90*int((rCount-1)%4));
+  rY.append(-70 + 80*int((rCount-1)/4));
+  rAng.append(random(-PI/10,PI/10));
 }

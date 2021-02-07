@@ -20,6 +20,11 @@ PFont npcTag;
 PFont narration;
 PFont recollections;
 SoundFile musicboxOpen;
+SoundFile boiler;
+SoundFile cow;
+SoundFile water;
+SoundFile train;
+SoundFile tree;
 PImage musicbox;
 PImage textbox;
 PImage choicebox;
@@ -102,7 +107,14 @@ void loadInteractables(){
   npcTag = createFont("Garamond Bold", 14);
   //recollections = createFont("Colonna MT", 30);
   recollections = createFont("TektonPro-BoldCond", 30);
+  
   musicboxOpen = new SoundFile(this, "res/music/MX04_musicbox.wav");
+  boiler = new SoundFile(this, "res/sound/boiler.wav");
+  cow = new SoundFile(this, "res/sound/cow.wav");
+  water = new SoundFile(this, "res/sound/water.wav");
+  train = new SoundFile(this, "res/sound/train.wav");
+  tree = new SoundFile(this, "res/sound/tree.wav");
+
   musicbox = loadImage("res/musicbox.png");
   textbox = loadImage("res/textbox.png");
   choicebox = loadImage("res/choicebox.png");
