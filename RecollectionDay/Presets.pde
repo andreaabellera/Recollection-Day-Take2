@@ -16,6 +16,7 @@ SoundFile caveTheme;
 
 // Interaction assets
 PFont conversation;
+PFont npcTag;
 PFont narration;
 PFont recollections;
 SoundFile musicboxOpen;
@@ -96,6 +97,9 @@ void loadMusic(){
 }
 
 void loadInteractables(){
+  narration = createFont("Garamond", 14);
+  conversation = createFont("Garamond", 13);
+  npcTag = createFont("Garamond Bold", 14);
   //recollections = createFont("Colonna MT", 30);
   recollections = createFont("TektonPro-BoldCond", 30);
   musicboxOpen = new SoundFile(this, "res/music/MX04_musicbox.wav");

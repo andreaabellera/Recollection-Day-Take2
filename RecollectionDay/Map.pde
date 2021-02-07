@@ -11,8 +11,8 @@ class Map{
   public float mWidth;
   public float mHeight;
   public Map firstCueException = null; // entering this map will not restart the soundtrack
-  private ArrayList<Box> hitBoxes = new ArrayList<Box>(); // player cannot enter this box
   private ArrayList<Box> spriteBoxes = new ArrayList<Box>(); // dimensions where a sprite is drawn
+  private ArrayList<Box> hitBoxes = new ArrayList<Box>(); // player cannot enter this box
   private ArrayList<Door> doors = new ArrayList<Door>(); // transfers player to a specific coordinate in another map
   private ArrayList<Box> cues = new ArrayList<Box>(); // event is triggered when player enters this box
   
@@ -34,6 +34,10 @@ class Map{
     endShape();
   }
   
+  public void setException(Map mapException){
+    firstCueException = mapException;
+  }
+  
   public void addMapSprites(Box sprite){
     spriteBoxes.add(sprite);
   }
@@ -46,13 +50,24 @@ class Map{
     doors.add(door);
   }
   
-  public void setException(Map mapException){
-    firstCueException = mapException;
+  public void addCue(Box cue){
+    cues.add(cue);
   }
   
   public void drawMapSprites(){
     for(int i = 0; i < spriteBoxes.size(); i++){
       spriteBoxes.get(i).draw();
+    }
+  }
+  
+  public void changeImage(int id, PImage newTexture){
+    Box theSprite = spriteBoxes.get(id);
+    theSprite.boxTexture = newTexture;
+  }
+  
+  public void drawHitboxes(){
+    for(int i = 0; i < hitBoxes.size(); i++){
+      hitBoxes.get(i).draw();
     }
   }
   
@@ -70,7 +85,17 @@ class Map{
         if(collideY){
           playerY = lastY;
         }
+        interact(i);
       }
+    }
+  }
+  
+  public void drawDoors(){
+    for(int i = 0; i < doors.size(); i++){
+      pushMatrix();
+      translate(0,0,0.25);
+      doors.get(i).draw();
+      popMatrix();
     }
   }
   
@@ -89,23 +114,14 @@ class Map{
     return theDoor;
   }
   
+  public void drawCues(){
+    for(int i = 0; i < cues.size(); i++){
+      cues.get(i).draw();
+    }
+  }
+  
   private boolean collide(float pStart, float pEnd, float bStart, float bEnd){
     return (pStart <= bEnd && pEnd >= bStart);
-  }
-  
-  public void drawHitboxes(){
-    for(int i = 0; i < hitBoxes.size(); i++){
-      hitBoxes.get(i).draw();
-    }
-  }
-  
-  public void drawDoors(){
-    for(int i = 0; i < doors.size(); i++){
-      pushMatrix();
-      translate(0,0,0.25);
-      doors.get(i).draw();
-      popMatrix();
-    }
   }
   
 }

@@ -72,7 +72,7 @@ void menu(){
     if(menuTint <= 0){
       menuTheme.stop();
       menuScreen = false;
-      noTint();
+      startEvent();
     }
   }
 }

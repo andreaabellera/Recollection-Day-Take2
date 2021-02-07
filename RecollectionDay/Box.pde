@@ -10,8 +10,6 @@ class Box{
   public float r; // right
   public float b; // bottom
   public float t; // top
-  public float boxWidth;
-  public float boxHeight;
   
   public Box(PImage boxTexture, float l, float r, float b, float t){
     this.boxTexture = boxTexture;

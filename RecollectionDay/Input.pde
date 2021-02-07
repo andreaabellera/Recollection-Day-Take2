@@ -20,7 +20,7 @@ void keyPressed(){
         if(musicboxToggled){
           rIndX = max(0,rIndX-1);
         }
-        else{
+        else if(!playerPause){
           keyLeft = true;
           playerAngle = PI;
         }
@@ -29,7 +29,7 @@ void keyPressed(){
         if(musicboxToggled){
           rIndX = min(3,rIndX+1);
         }
-        else{
+        else if(!playerPause){
           keyRight = true;
           playerAngle = 0;
         }
@@ -38,7 +38,7 @@ void keyPressed(){
         if(musicboxToggled){
           rIndY = max(0,rIndY-1);
         }
-        else{
+        else if(!playerPause){
           keyUp = true;
         }
       }
@@ -46,7 +46,7 @@ void keyPressed(){
         if(musicboxToggled){
           rIndY = min(2,rIndY+1);
         }
-        else{
+        else if(!playerPause){
           keyDown = true;
         }
       }
@@ -63,6 +63,10 @@ void keyPressed(){
     else{
       map.music.play();
     }
+  }
+  if(key == 'z'){
+    narrating = false;
+    conversing = false;
   }
   
   // Test
@@ -95,11 +99,14 @@ void keyPressed(){
     rAng.append(random(-PI/10,PI/10));
     println("Added new recollection. Total recollections: " + rCount);
   }
-  if(key == '<'){ //show sample global narration text
-    //
-  }
-  if(key == '>'){ //show sample conversation
-    //
+  if(key == '|'){
+    town.changeImage(3, spriteHouseRuin1);
+    town.changeImage(4, spriteHouseRuin2);
+    town.changeImage(5, spriteHouseRuin3);
+    town.changeImage(6, spriteHouseRuin1);
+    town.changeImage(8, spriteHouseRuin2);
+    town.changeImage(9, spriteHouseRuin3);
+    town.changeImage(10, spriteHouseRuin1);
   }
   
 }

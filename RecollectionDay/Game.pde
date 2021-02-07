@@ -43,6 +43,20 @@ void game(){
     firstCue = false;
   }
   
+  // Handle events
+  if(narrating){
+    narrate(currMsg);
+  }
+  else if(conversing){
+    converse(currMsg, npcName);
+  }
+  else{
+    playerPause = false;
+    currMsg = "";
+    msgInd = 0;
+  }
+  
+  
   if(!map.music.isPlaying() && !musicboxToggled && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
@@ -53,6 +67,7 @@ void game(){
   if(switchMap != null){
     switchMap.switchMap();
   }
+  
   if(fadeIn){
     fadeTint += 0.01;
     if(fadeTint >= 1){
