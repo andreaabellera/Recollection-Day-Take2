@@ -43,7 +43,7 @@ void game(){
     map.music.jump(0);
     firstCue = false;
   }
-  else if(!map.music.isPlaying() && !musicboxToggled && !playerPause && !firstCue){
+  else if(!map.music.isPlaying() && !musicboxToggled && !playerPause && !audioCue && !firstCue){
     map.music.play();
     map.music.jump(map.loopEntry);
   }
@@ -56,11 +56,16 @@ void game(){
   }
   
   // Handle events
+  checkEvents();
+  
   if(narrating){ 
     narrate(currMsg);
   }
   else if(conversing){
     converse(currMsg, npcName);
+  }
+  else{
+    playerPause = false;
   }
   
   // Handle map transition

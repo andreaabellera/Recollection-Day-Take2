@@ -65,34 +65,6 @@ void keyPressed(){
     }
   }
   if(key == 'z'){
-    narrating = false;
-    conversing = false;
-  }
-  
-  // Test
-  if(key == 't'){
-    println("Set map: town");
-    if(map == cave){
-      map.music.stop();
-      firstCue = true;
-    }
-    map = town;
-  }
-  if(key == 'h'){
-    println("Set map: home");
-    if(map == cave){
-      map.music.stop();
-      firstCue = true;
-    }
-    map = home;
-  }
-  if(key == 'c'){
-    println("Set map: cave");
-    map.music.stop();
-    map = cave;
-    firstCue = true;
-  }
-  if(key == 'z'){
     if(musicboxToggled){
       int index = rIndX + 4*rIndY;
       SoundFile cue = soundCollection.get(index);

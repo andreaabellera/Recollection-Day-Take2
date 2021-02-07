@@ -5,23 +5,83 @@
 ////////////////////////////////////////////////////
 
 boolean startEvent = false;
-boolean trainPass = false;
 boolean narrating = false;
 boolean conversing = false;
 boolean audioCue = false;
 SoundFile currCue;
-String npcName = "Ilot";
+String npcName = "";
 boolean playerPause = false;
-boolean autoTimeout = true;
 int time = 0;
 int timeout = 180;
-String msg = "They who stay behind should feed those in front.";
+String msg = "";
 String currMsg = "";
 int msgInd = 0;
 
+Box tBox;
+Box wBox;
+int wCtr = 0;
+float tWidth = 154;
+boolean trainPass = false;
+float trainStop = 4;
+
+void checkEvents(){
+  // Train Event
+  if(map == town){
+    if(trainPass && (playerY < 315 || playerY > 380)){
+      trainLeave();
+    }
+    else if(playerY > 315 && playerY < 380){
+      trainPass = true;
+      trainArrive();
+    }
+  }
+}
+
 void startEvent(){
-  fadeIn = true;
-  fadeTint = 0;
+  playerPause = true;
+  npcName = "Iryna";
+  msg = "One of the cows escaped today, it shouldn't have gone too far.\nYet, your father's still looking for it.";
+  conversing = true;
+}
+
+void trainArrive(){
+  tBox.l = max(trainStop,tBox.l - 4);
+  tBox.r = tBox.l + tWidth;
+  pushMatrix();
+  translate(0,0,0.2);
+  tBox.draw();
+  translate(0,0,-0.01);
+  if(tBox.l == trainStop){
+    wCtr++;
+    if(wCtr == 30){
+      float temp = wBox.l;
+      wBox.l = wBox.r;
+      wBox.r = temp;
+    }
+    else if(wCtr == 60){
+      wCtr = 0;
+    }
+    wBox.draw();
+  }
+  popMatrix();
+}
+
+void trainLeave(){
+  tBox.l -= 4;
+  tBox.r = tBox.l + tWidth;
+  beginShape(QUADS);
+  texture(spriteTrain);
+  vertex(tBox.l,tBox.t,0.2,  0,0);
+  vertex(tBox.r,tBox.t,0.2,  1,0);
+  vertex(tBox.r,tBox.b,0.2,  1,1);
+  vertex(tBox.l,tBox.b,0.2,  0,1);
+  endShape();
+  
+  if(tBox.l < -346){
+    tBox.l = 200;
+    trainCount++;
+    trainPass = false;
+  }
 }
 
 void narrate(String message){
@@ -71,17 +131,13 @@ void msgIterate(){
   else{
     msg = "";
     time++;
-    if(autoTimeout && time >= timeout){
+    if(time >= timeout){
       narrating = false;
       conversing = false;
       time = 0;
       currMsg = "";
       msgInd = 0;
     }
-  }
-  
-  if(!autoTimeout){
-    playerPause = true;
   }
 }
 
@@ -121,6 +177,10 @@ void interact(int spriteID){
     else if(spriteID == 11){ // boy
       msg = "Mama said to keep far and don't disturb the workers.";
       msg = "Yulia, so many trains are passing by today. You should have seen the\nsixth train, that one's huge!";
+      if(ivanConverseCowUnlocked()){
+        msg = "The cows are scared, yea. Not because they have to be turned\nto meat, but because they can feel the earthquakes too.";
+        ivanConverseCow = true;
+      }
       currMsg = "";
       msgInd = 0;
       narrating = false;
@@ -133,7 +193,7 @@ void interact(int spriteID){
       currMsg = "";
       msgInd = 0;
       narrating = false;
-      npcName = "Vlad";
+      npcName = "Farmer Vlad";
       conversing = true;
     }
     else if(spriteID == 13){ // well
@@ -156,24 +216,17 @@ void interact(int spriteID){
       currMsg = "";
       msgInd = 0;
       narrating = true;
-      if(!cowCue){
-        cowCue = true;
-        addRecollection(cow,"They bow down together; ..but themselves are gone\ninto captivity.");
-        audioCue = true;
-        currCue = cow;
-        map.music.pause();
-        cow.play();
-        playerPause = true;
-      }
     }
     else if(spriteID == 15){ // far sack
-      msg = "I should not stand in the railroad or the trains will hit me.";
+      msg = "Get away from the railroad, child! A train will hit you.";
       currMsg = "";
       msgInd = 0;
-      narrating = true;
+      narrating = false;
+      npcName = "Farmer Vlad";
+      conversing = true;
     }
     else if(spriteID > 15 && spriteID < 19){ // sacks
-      msg = "Crops are inside the sacks.";
+      msg = "There are crops are inside the sacks.";
       currMsg = "";
       msgInd = 0;
       narrating = true;
@@ -197,7 +250,7 @@ void interact(int spriteID){
       }
     }
     else if(spriteID == 4){ // mom
-      msg = "Your father is coming home. Go to sleep, Yulia.";
+      msg = "It's sundown. Go to sleep, Yulia.";
       currMsg = "";
       msgInd = 0;
       narrating = false;
@@ -210,5 +263,67 @@ void interact(int spriteID){
   }
 }
 
-// HOUSE IDs
-// #3,4,5,6,8,9,10
+void signalCue(int cueID){
+  if(map == town){
+    if(cueID == 0){ // train
+      if(trainCount == 6  && !trainCue){
+        msg = "The train shakes the earth, makes a terrible sound.\nBellows of alert to keep your ground";
+        currMsg = "";
+        msgInd = 0;
+        narrating = true;
+        trainCue = true;
+        addRecollection(train,"For when they shall say, Peace and safety;\nthen sudden destruction cometh.");
+        audioCue = true;
+        currCue = train;
+        map.music.pause();
+        train.play();
+        playerPause = true;
+      }
+    }
+    else if(cueID == 1){ // cow
+      if(!narrating){
+        msg = "The cows seem afraid.";
+        currMsg = "";
+        msgInd = 0;
+        narrating = true;
+      }
+      if(!cowCue){
+        cowCue = true;
+        addRecollection(cow,"They bow down together; ..but themselves are gone\ninto captivity.");
+        audioCue = true;
+        currCue = cow;
+        map.music.pause();
+        cow.play();
+        playerPause = true;
+      }
+    }
+    else if(cueID == 2){ // clearing
+      narrating = true;
+      if(!clearingEvent && clearingUnlocked()){
+        clearingEvent = true;
+        msg = "There is a path, the cow must have gone here.";
+        playerX -= 20;
+        currMsg = "";
+        msgInd = 0;
+        fadeIn = true;
+        fadeTint = 0;
+      }
+    }
+  }
+  else if(map == home){
+    if(cueID == 0){ // bed
+      if(!narrating){
+        msg = "Should I go to sleep?";
+        currMsg = "";
+        msgInd = 0;
+        narrating = true;
+      }
+    }
+    if(cueID == 1){ // mom
+      map.changeImage(7,spriteMom);
+    }
+    if(cueID == 2){ // mom
+      map.changeImage(7,spriteMomSide);
+    }
+  }
+}

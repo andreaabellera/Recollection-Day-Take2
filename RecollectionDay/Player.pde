@@ -39,6 +39,7 @@ void movePlayer(){
   
   updateHitbox();
   map.checkCollisions();
+  map.checkCues();
 }
 
 void drawPlayer(int frameCtr){

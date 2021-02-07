@@ -4,8 +4,20 @@
 //   - A bunch of booleans
 ////////////////////////////////////////////////////
 
-boolean waterCue = false;
+
 boolean cowCue = false;
-boolean boilerCue = false;
-boolean treeCue = false;
+int trainCount = 0;
 boolean trainCue = false;
+boolean ivanConverseCow = false;
+boolean clearingEvent = false;
+boolean treeCue = false;
+boolean boilerCue = false;
+boolean waterCue = false;
+
+boolean ivanConverseCowUnlocked(){
+  return cowCue && trainCue;
+}
+
+boolean clearingUnlocked(){
+  return cowCue && trainCue && ivanConverseCow;
+}

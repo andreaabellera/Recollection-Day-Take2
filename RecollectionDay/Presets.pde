@@ -87,13 +87,6 @@ void loadPresets(){
   makeHome();
   makeCave();
   setExceptions();
-  
-  
-  // PFONT ITERATOR
-  //String[] fonts = PFont.list(); 
-  //for(int i = 0; i < fonts.length; i++){
-  //  println(fonts[i]);
-  //}
 }
 
 void loadMusic(){
@@ -221,15 +214,21 @@ void makeTown(){
       town.addHitbox(new Box(hitboxTest,-82,-50,400,367));
       town.addHitbox(new Box(hitboxTest,-17,13,417,384));
   
-  town.addMapSprites(new Box(spriteWorkers,-68,-20,425,375));
-      town.addHitbox(new Box(hitboxTest,-68,-20,425,415));
+  wBox = new Box(spriteWorkers,-68,-20,425,375);
+  //town.addMapSprites(new Box(spriteWorkers,-68,-20,425,375));
+      //town.addHitbox(new Box(hitboxTest,-68,-20,425,415));
   
+  tBox = new Box(spriteTrain,200,130,472,350);
   //town.addMapSprites(new Box(spriteTrain,-24,130,472,350));
       //town.addHitbox(new Box(hitboxTest,-24,130,472,350));
   town.addMapSprites(new Box(wallTownLeft,-130,-257,30,-560));
   town.addMapSprites(new Box(wallTownRight,-130,-257,500,-30));
   town.addMapSprites(new Box(wallTownLeft,130,260,500,-30));
   town.addMapSprites(new Box(wallTownRight,130,260,30,-525));
+  
+          town.addCue(new Box(hitboxTest,-200,200,380,315));
+          town.addCue(new Box(hitboxTest,100,130,428,415));
+          town.addCue(new Box(hitboxTest,175,190,5,-35));
 }
 
 void makeHome(){
@@ -249,6 +248,10 @@ void makeHome(){
   
   home.addMapSprites(new Box(spriteMomSide,43,58,45,5));
       home.addHitbox(new Box(hitboxTest,43,58,45,35));
+      
+      home.addCue(new Box(hitboxTest,65,86,-150,-190));
+      home.addCue(new Box(hitboxTest,-100,100,120,80));
+      home.addCue(new Box(hitboxTest,-100,100,50,10));
 }
 
 void makeCave(){

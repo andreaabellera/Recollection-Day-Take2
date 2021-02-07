@@ -120,6 +120,19 @@ class Map{
     }
   }
   
+  public void checkCues(){
+    boolean collideX = false;
+    boolean collideY = false;
+    for(int i = 0; i < cues.size(); i++){
+      Box box = cues.get(i);
+      collideX = collide(pHitbox.l,pHitbox.r,  box.l,box.r);
+      collideY = collide(pHitbox.t,pHitbox.b,  box.t,box.b);
+      if(collideX && collideY){ 
+        signalCue(i);
+      }
+    }
+  }
+  
   private boolean collide(float pStart, float pEnd, float bStart, float bEnd){
     return (pStart <= bEnd && pEnd >= bStart);
   }
