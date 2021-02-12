@@ -83,6 +83,13 @@ void keyPressed(){
     town.changeImage(8, spriteHouseRuin2);
     town.changeImage(9, spriteHouseRuin3);
     town.changeImage(10, spriteHouseRuin1);
+    town.changeImage(2, spriteInvisible);
+    town.changeImage(7, spriteInvisible);
+    town.changeImage(11, spriteInvisible);
+    town.changeImage(12, spriteInvisible);
+    if(recollectionImages.size() > 0){
+      recollectionImages.set(0, recollectionbox);
+    }
   }
   
 }

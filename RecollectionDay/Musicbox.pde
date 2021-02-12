@@ -6,6 +6,7 @@
 
 ArrayList<SoundFile> soundCollection = new ArrayList<SoundFile>();
 ArrayList<String> soundDescription = new ArrayList<String>();
+ArrayList<PImage> recollectionImages = new ArrayList<PImage>();
 float mbX = 170; // coordinates of musicbox in screen
 float mbY = -140;
 float mbSize = 20;
@@ -45,7 +46,7 @@ void drawRecollections(int count){
       stroke(0.9,0.9,0.5);
     }
     beginShape(QUADS);
-    texture(choicebox); 
+    texture(recollectionImages.get(i)); 
     vertex(0, 0,  0,0);
     vertex(rWidth, 0,  1,0);
     vertex(rWidth, rHeight,  1,1);
@@ -60,6 +61,7 @@ void drawRecollections(int count){
 void addRecollection(SoundFile audioCue, String description){
   soundCollection.add(audioCue);
   soundDescription.add(description);
+  recollectionImages.add(choicebox);
   rCount++;
   rX.append(-160 + 90*int((rCount-1)%4));
   rY.append(-70 + 80*int((rCount-1)/4));

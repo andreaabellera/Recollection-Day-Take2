@@ -28,6 +28,7 @@ SoundFile tree;
 PImage musicbox;
 PImage textbox;
 PImage choicebox;
+PImage recollectionbox;
 
 // Maps
 PImage mapTown;
@@ -74,11 +75,13 @@ PImage spriteMan;
 PImage spriteFarmer;
 PImage spriteWorkers;
 
-// Dummy box texture
+// Dummy boxes
 PImage hitboxTest;
+PImage spriteInvisible;
 
 void loadPresets(){
   hitboxTest = loadImage("res/hitboxtest.png");
+  spriteInvisible = loadImage("res/invisible.png");;
   loadMusic();
   loadInteractables();
   loadMapAssets();
@@ -111,6 +114,7 @@ void loadInteractables(){
   musicbox = loadImage("res/musicbox.png");
   textbox = loadImage("res/textbox.png");
   choicebox = loadImage("res/choicebox.png");
+  recollectionbox = loadImage("res/recollectionbox.png");
 }
 
 void loadMapAssets(){
