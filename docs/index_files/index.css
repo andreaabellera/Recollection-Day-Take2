@@ -1,0 +1,431 @@
+@import url("https://fonts.googleapis.com/css2?family=Kurale&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
+
+:root{
+    --headerColor: #5c554d;
+    --headerBtnColor: #827066;
+    --footerColor: #5c554d;
+    --primaryBodyColor: #4d4c52;
+    --secondaryBodyColor: #767475;
+    --tertiaryBodyColor: #717a67;
+    --heroPicture: url('res/wallpaper.jpg');
+    --storyPicture: url('res/townplan.jpg');
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: #d3cdc3;
+    font-family: 'Kurale', serif;
+    scroll-behavior: smooth;
+}
+
+header{
+    height: auto;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 0.5% 0% 0.5% 0%;
+    background-color: var(--headerColor);
+    opacity: 90%;
+}
+
+header-base{
+    display: flex;
+    justify-content: center;
+}
+
+header:hover{
+    opacity: 100%;
+    transition: 0.2s;
+}
+
+.header-title{
+    font-weight: bolder;
+    font-size: 24px;
+    align-self: center;
+}
+
+.header-image{
+    margin: 0.5% 2% 0.5% 2%;
+    background-image: url('res/workers.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.header-button-array{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.header-button{
+    background-color: var(--headerBtnColor);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 0.8% 2% 0.8% 2%;
+    margin-left: 1%;
+    border-radius: 1.2em;
+    margin: 0% 0.5% 0.5% 0%;
+}
+
+.header-button a{
+    text-decoration: none;
+    color: #211f20;
+}
+
+.header-button:hover{
+    cursor: pointer;
+    background-color: var(--primaryBodyColor);
+    transition: 0.5s
+}
+
+.header-button:hover a{
+    color: beige;
+}
+
+.header-ornament{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1px 1px;
+}
+
+.orn-filler{
+    background-color: #c4c4c4;
+}
+
+.hero{
+    background-image: var(--heroPicture);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero .content-text{
+    z-index: 1;
+    margin: 15% 0% 0% 5%;
+    opacity: 50%;
+}
+
+.about{
+    background-color: var(--primaryBodyColor);
+}
+
+.content{
+    margin-top: 20vw;
+    padding: 2%;
+    opacity: 95%;
+    z-index: 1;
+    width: 100%;
+}
+
+.feature{
+    padding: 1.5%;
+    opacity: 95%;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.content-title{
+    font-size: 24px;
+}
+
+.content-text{
+    margin-top: 2%;
+    font-size: 16px;
+    font-family: 'Coming Soon', cursive;
+    font-weight: 300;
+}
+
+.awards{
+    background-color: var(--primaryBodyColor);
+}
+
+.award-container{
+    width: 60%;
+    display: grid;
+    background-color: firebrick;
+    grid-template-columns: 50% 50%;
+    margin-bottom: 1%;
+    padding: 1% 0% 1% 0%;
+    justify-items: flex-start;
+    border-bottom-left-radius: 5em;
+    border-bottom-right-radius: 5em;
+    border-top-left-radius: 48%;
+    border-top-right-radius: 48%;
+    align-items: center;
+}
+
+.award-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: flex-start;
+    height: auto;
+    width: 100%;
+    margin: 1%;
+}
+
+.award-item img{
+    height: 90%;
+    width: 90%;
+}
+
+.award-item img:hover{
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transform: translateY(-4%);
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+    box-shadow: 0em 0.8em 0.8em 0.05em rgba(20, 20, 20, 0.5);
+}
+
+.creators{
+    background-image: linear-gradient(to right, #827066,#807a62, #6b6356, #696156);
+}
+
+.content a{
+    text-decoration: none;
+    color: bisque;
+}
+
+.content a:hover{
+    color: tan;
+}
+
+.soundtracks{
+    background-color: var(--secondaryBodyColor);
+}
+
+.soundtrack-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.soundtrack-array{
+    margin-top: 4%;
+    display: grid;
+    width: 45%;
+    grid-template-columns: 70% 30%;
+}
+
+audio{
+    justify-self: flex-end;
+}
+
+.demo{
+    background-color: var(--tertiaryBodyColor);
+    margin: 20vw 0 20vw 0;
+}
+
+.level-container{
+    margin: 3% 0% 3% 0%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-items: center;
+    align-items: center;
+}
+
+.level-container img{
+    height: 15em;
+    width: 15em;
+    margin: 1%;
+}
+
+.story{
+    background-image: var(--storyPicture);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.story .content-text{
+    opacity: 0%;
+    text-align: center;
+    width: 50%;
+}
+
+.story:hover{
+    cursor: pointer;
+}
+
+.story:hover .content-text{
+    transition: 20s ease-in;
+    opacity: 100%;
+}
+
+footer{
+    height: auto;
+    padding: 1%;
+    z-index: 1;
+    background-color: var(--footerColor);
+}
+
+/* HERO GLOW EFFECTS - Modified from source: https://wweb.dev/resources/animated-css-background-generator/ */
+
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+.hero span {
+    opacity: 45%;
+    width: 10vmin;
+    height: 10vmin;
+    border-radius: 20vmin;
+    backface-visibility: hidden;
+    position: absolute;
+    animation: move;
+    animation-duration: 45;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.hero span:nth-child(0) {
+    color: #9a97a8;
+    top: 25%;
+    left: 34%;
+    animation-duration: 15s;
+    animation-delay: -27s;
+    transform-origin: 23vw 4vh;
+    box-shadow: -40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(1) {
+    color: #9a97a8;
+    top: 29%;
+    left: 4%;
+    animation-duration: 23s;
+    animation-delay: -14s;
+    transform-origin: -16vw 5vh;
+    box-shadow: 40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(2) {
+    color: var(--secondaryBodyColor);
+    top: 53%;
+    left: 69%;
+    animation-duration: 18s;
+    animation-delay: -3s;
+    transform-origin: -5vw 18vh;
+    box-shadow: -40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(3) {
+    color: var(--secondaryBodyColor);
+    top: 6%;
+    left: 50%;
+    animation-duration: 21s;
+    animation-delay: -21s;
+    transform-origin: -21vw 10vh;
+    box-shadow: -40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(4) {
+    color: var(--secondaryBodyColor);
+    top: 68%;
+    left: 43%;
+    animation-duration: 12s;
+    animation-delay: -23s;
+    transform-origin: 17vw 4vh;
+    box-shadow: 40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(5) {
+    color: #9a97a8;
+    top: 20%;
+    left: 82%;
+    animation-duration: 20s;
+    animation-delay: -1s;
+    transform-origin: -18vw -3vh;
+    box-shadow: -40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(6) {
+    color: #9a97a8;
+    top: 73%;
+    left: 28%;
+    animation-duration: 7s;
+    animation-delay: -27s;
+    transform-origin: -3vw -22vh;
+    box-shadow: 40vmin 0 2vmin currentColor;
+}
+.hero span:nth-child(7) {
+    color: grey;
+    top: 39%;
+    left: 32%;
+    animation-duration: 36s;
+    animation-delay: -36s;
+    transform-origin: -22vw 18vh;
+    box-shadow: -40vmin 0 1.5vmin currentColor;
+}
+.hero span:nth-child(8) {
+    color: grey;
+    top: 9%;
+    left: 38%;
+    animation-duration: 10s;
+    animation-delay: -3s;
+    transform-origin: -12vw -14vh;
+    box-shadow: 40vmin 0 1.5vmin currentColor;
+}
+.hero span:nth-child(9) {
+    color: grey;
+    top: 67%;
+    left: 65%;
+    animation-duration: 11s;
+    animation-delay: -18s;
+    transform-origin: 15vw 19vh;
+    box-shadow: 40vmin 0 1.5vmin currentColor;
+}
+
+
+/* SQUARE/VERTICAL MEDIA SCREEN */
+
+@media screen and (max-aspect-ratio: 5/4) {
+    .header-base{
+        height: 13vw;
+    }
+
+    .header-button{
+        font-size: 24px;
+        padding: 2.8% 4% 2.8% 4%;
+        margin-left: 3%;
+        border-radius: 1.8em;
+        margin: 2% 2.5% 2.5% 2%;
+    }
+
+    .hero .content-text{
+        font-size: 40px;
+    }
+
+    .content{
+        margin-top: 50vw;
+    }
+
+    .content-title{
+        font-size: 16px;
+    }
+
+    .content-text{
+        font-size:12px;
+    }
+
+    .soundtrack-array{
+        width: 90%;
+    }
+
+    .demo{
+        margin: 50vw 0 50vw 0;
+    }
+}
