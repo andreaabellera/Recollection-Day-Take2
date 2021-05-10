@@ -6,4 +6,4 @@ Original game jam file that was developed in 48 hours is located in https://gith
 
 ## Status: Finished (Demo Release)
 This demo release includes complete environments for three maps, and the music box interface. Up to five recollections can be discovered. 
-The story, however, stops upon discovering a secret clearing. The game can be continued given enough interest.
+The story, however, stops upon discovering a secret clearing.
